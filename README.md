@@ -2,13 +2,13 @@
 
 ## Giới thiệu
 
-Đây là module **Reliable Data Transfer (RDT)** được xây dựng bằng Python trên nền giao thức UDP.
+This is module **Reliable Data Transfer (RDT)** built in Python on UDP.
 
-Module sử dụng cơ chế **Stop-and-Wait ARQ** nhằm đảm bảo dữ liệu được truyền chính xác và đầy đủ giữa Sender và Receiver.
+Using **Stop-and-Wait ARQ** to ensure that data is transfered accurately and stably between Sender and Receiver.
 
 ---
 
-## Chức năng
+## Function
 
 - Packet Serialization / Deserialization
 - Checksum Verification
@@ -24,7 +24,7 @@ Module sử dụng cơ chế **Stop-and-Wait ARQ** nhằm đảm bảo dữ li�
 
 ---
 
-## Cấu trúc thư mục
+## Folder architecture
 
 ```
 project/
@@ -49,13 +49,13 @@ project/
 
 ---
 
-## Cấu trúc Packet
+## Packet architecture
 
-Packet gồm hai phần:
+Packet has 2 part:
 
 ### Header
 
-| Trường | Kích thước |
+| Field | Size |
 |---------|-----------:|
 | Checksum | 2 bytes |
 | Packet Type | 1 byte |
@@ -117,9 +117,9 @@ Write File
 
 ---
 
-## Cách sử dụng
+## Using guide
 
-### Khởi tạo
+### Build
 
 ```python
 from rdt import RDT
@@ -132,7 +132,7 @@ rdt = RDT(
 
 ---
 
-### Gửi file
+### Send file
 
 ```python
 rdt.send_file_reliable(
@@ -143,7 +143,7 @@ rdt.send_file_reliable(
 
 ---
 
-### Nhận file
+### Receive file
 
 ```python
 rdt.receive_file_reliable(
@@ -155,9 +155,9 @@ rdt.receive_file_reliable(
 
 ## Packet Loss Simulation
 
-Có thể mô phỏng mất gói bằng tham số `loss_rate`.
+Can be simualted by `loss_rate` parameter.
 
-Ví dụ:
+Ex:
 
 ```python
 rdt = RDT(
@@ -167,16 +167,16 @@ rdt = RDT(
 )
 ```
 
-Ý nghĩa:
+Meaning:
 
 | loss_rate | Mô tả |
 |----------:|------|
-| 0.0 | Không mất gói |
-| 0.1 | Mất khoảng 10% DATA Packet |
-| 0.3 | Mất khoảng 30% DATA Packet |
-| 0.5 | Mất khoảng 50% DATA Packet |
+| 0.0 | Didn't lose |
+| 0.1 | Lost ab 10% DATA Packet |
+| 0.3 | Lost 30% DATA Packet |
+| 0.5 | Lost 50% DATA Packet |
 
-Ví dụ log:
+Ex log:
 
 ```
 [SEND] DATA seq=0
@@ -189,7 +189,7 @@ Ví dụ log:
 
 ---
 
-## Kiểm tra Hash
+## Check Hash
 
 Module hỗ trợ tính hash của file.
 
